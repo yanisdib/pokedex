@@ -15,7 +15,7 @@ function AppRouter() {
                 </Routes>
             </main>
         </Router>
-    )
+    );
 }
 
 
