@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchPokemonRequest } from '../services/redux/actions/types';
+import { fetchPokemonRequest } from '../services/redux/actions/pokemon';
 
 
-const usePokemon = (settings = { offset = 0, limit = 12 }) => {
+const usePokemon = (settings) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
