@@ -4,7 +4,7 @@ import {
     takeLatest
 } from '@redux-saga/core/effects';
 
-import { fetchPokemonURL } from '../../../api/pokemon';
+import { fetchPokemon as fetchPokemonData } from '../../../api/pokemon';
 
 import {
     fetchPokemonSuccess,
@@ -14,11 +14,11 @@ import {
 
 function* fetchPokemon({ settings }) {
     try {
-        const pokemon = yield call(fetchPokemonURL, settings);
+        const pokemon = yield call(fetchPokemonData, settings);
         yield put(fetchPokemonSuccess(pokemon));
     }
     catch (error) {
-        const newError = new Error('Fetching Pokémon has failed. Please refresh the page.');
+        const newError = new Error('Request failed. Please refresh the page.');
 
         console.log(`ERROR ${error.code} : ${error.message}`);
 
@@ -28,5 +28,5 @@ function* fetchPokemon({ settings }) {
 
 
 export default function* pokemonSaga() {
-    yield takeLatest('pokemon/fetchPokemonRequested', fetchPokemon);
+    yield takeLatest('pokemon/fetchPokemonRequested', fetchPokemon); 
 }
