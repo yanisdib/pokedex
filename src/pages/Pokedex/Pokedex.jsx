@@ -1,5 +1,21 @@
+import { useState } from 'react';
+import { Container, SideBar } from '../../components';
+
+import usePokemon from '../../hooks/usePokemon';
+import usePokemonTypes from '../../hooks/usePokemonTypes';
+
+
 function Pokedex() {
-    return <p>Pokedex</p>;
+    const [settings, setSettings] = useState({ offset: 0, limit: 12 });
+
+    const types = usePokemonTypes();
+
+    return (
+        <Container>
+            <SideBar />
+            <p>oh</p>
+        </Container>
+    );
 }
 
 
