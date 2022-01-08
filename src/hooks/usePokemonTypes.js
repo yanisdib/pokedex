@@ -12,6 +12,7 @@ const usePokemonTypes = () => {
     }, []);
 
     const types = useSelector(state => state.types);
+    
     const { data, isLoading } = types;
 
     return [data, isLoading];
