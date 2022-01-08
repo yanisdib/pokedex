@@ -1,8 +1,8 @@
-import { Home } from './pages';
+import { Pokedex } from './pages';
 
 
 function App() {
-  return <Home></Home>;
+  return <Pokedex></Pokedex>;
 }
 
 
