@@ -1,6 +1,3 @@
-
-## Available Scripts
-
 ## POKEDEX APP 
 
 A simple Pokédex app using the RESTful API [PokéAPI](https://pokeapi.co/)
