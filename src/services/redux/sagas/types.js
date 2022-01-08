@@ -4,21 +4,22 @@ import {
     takeLatest
 } from '@redux-saga/core/effects';
 
-import { fetchTypesData } from '../../../api/pokemon';
+import { fetchTypes as fetchTypesData } from '../../../api/pokemon';
 
 import {
     fetchTypesSuccess,
     fetchTypesFailure
-} from '../actions/pokemon';
+} from '../actions/types';
 
 
 function* fetchTypes() {
+    console.log('yes')
     try {
         const types = yield call(fetchTypesData);
         yield put(fetchTypesSuccess(types));
     }
     catch (error) {
-        const newError = new Error(`Couldn't Types has failed. Please refresh the page.`);
+        const newError = new Error(`Request failed. Please refresh the page.`);
 
         console.log(`ERROR ${error.code} : ${error.message}`);
 
@@ -28,5 +29,6 @@ function* fetchTypes() {
 
 
 export default function* typesSaga() {
-    yield takeLatest('types/fetchTypesRequest', fetchTypes);
+    console.log('yes')
+    yield takeLatest('types/fetchTypesRequested', fetchTypes);
 }
