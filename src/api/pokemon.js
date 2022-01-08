@@ -10,10 +10,10 @@ const API_HEADERS = { "Content-type": "application/json;charset=UTF-8" };
  * @param {*} param0 object with offset and limit properties
  * @returns an array of nested objects containing all fetched Pokemon data
  */
-export const fetchPokemonURL = async ({ offset, limit }) => {
+export const fetchPokemon = async ({ offset, limit }) => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 
-    const response = await axios({
+    let response = await axios({
         method: 'get',
         url,
         responseType: API_RESPONSE_TYPE,
@@ -21,8 +21,9 @@ export const fetchPokemonURL = async ({ offset, limit }) => {
     });
 
     response = await response.data;
+
     const pokemon = await Promise.all(
-        response?.results.map(result => fetchPokemonData(result?.url))
+        response?.results.map(result => fetchPokemonByURL(result?.url))
     );
 
     return pokemon;
@@ -34,9 +35,9 @@ export const fetchPokemonURL = async ({ offset, limit }) => {
  * @param {*} url 
  * @returns an object with a specific Pokemon data
  */
-const fetchPokemonData = async (url) => {
-    const response = await axios({
-        method: 'post',
+const fetchPokemonByURL = async (url) => {
+    let response = await axios({
+        method: 'get',
         url,
         responseType: API_RESPONSE_TYPE,
         headers: API_HEADERS
@@ -52,11 +53,11 @@ const fetchPokemonData = async (url) => {
  * Fetch every existing type and its basic information
  * @returns an array of objects with every existing type's name and URL
  */
-export const fetchTypesData = async () => {
+export const fetchTypes = async () => {
     const url = 'https://pokeapi.co/api/v2/type';
 
     const response = await axios({
-        method: 'post',
+        method: 'get',
         url,
         responseType: API_RESPONSE_TYPE,
         headers: API_HEADERS
