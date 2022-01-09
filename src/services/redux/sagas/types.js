@@ -13,7 +13,6 @@ import {
 
 
 function* fetchTypes() {
-    console.log('yes')
     try {
         const types = yield call(fetchTypesData);
         yield put(fetchTypesSuccess(types));
