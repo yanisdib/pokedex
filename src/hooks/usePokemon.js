@@ -12,9 +12,9 @@ const usePokemon = (settings) => {
     }, [settings]);
 
     const pokemon = useSelector(state => state.pokemon);
-    const { data, isLoading } = pokemon;
+    const { data, isLoading, error } = pokemon;
 
-    return [data, isLoading];
+    return [data, isLoading, error]; 
 }
 
 
