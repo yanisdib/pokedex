@@ -1,19 +1,40 @@
 import { useState } from 'react';
-import { Container, SideBar } from '../../components';
+import { v4 as uuidv4 } from 'uuid';
 
 import usePokemon from '../../hooks/usePokemon';
-import usePokemonTypes from '../../hooks/usePokemonTypes';
+import WithLoading from '../../helpers/hocs/withLoading';
+
+import {
+    Container,
+    PokemonGrid,
+    PokemonCardPreview,
+    SideBar
+} from '../../components';
 
 
 function Pokedex() {
     const [settings, setSettings] = useState({ offset: 0, limit: 12 });
 
-    const types = usePokemonTypes();
+    const [pokemon, isLoading, error] = usePokemon(settings);
+
+    const LoadingPokemonGrid = WithLoading(PokemonGrid);
 
     return (
         <Container>
             <SideBar />
-            <p>oh</p>
+            <LoadingPokemonGrid isLoading={isLoading}>
+                {
+                    pokemon.map(current =>
+                        <PokemonCardPreview
+                            key={uuidv4()}
+                            name={current.name}
+                            number={current.id}
+                            sprite={current.sprites.versions['generation-v']['black-white'].animated.front_default}
+                            types={current.types}
+                        />
+                    )
+                }
+            </LoadingPokemonGrid>
         </Container>
     );
 }
