@@ -4,17 +4,14 @@ import {
     takeLatest
 } from '@redux-saga/core/effects';
 
-import { fetchTypes as fetchTypesData } from '../../../api/pokemon';
+import { fetchTypes } from '../../../api/pokemon';
 
-import {
-    fetchTypesSuccess,
-    fetchTypesFailure
-} from '../actions/types';
+import { fetchTypesSuccess, fetchTypesFailure } from '../actions/types';
 
 
-function* fetchTypes() {
+function* fetchTypesSaga() {
     try {
-        const types = yield call(fetchTypesData);
+        const types = yield call(fetchTypes);
         yield put(fetchTypesSuccess(types));
     }
     catch (error) {
@@ -28,6 +25,5 @@ function* fetchTypes() {
 
 
 export default function* typesSaga() {
-    console.log('yes')
-    yield takeLatest('types/fetchTypesRequested', fetchTypes);
+    yield takeLatest('types/fetchTypesRequested', fetchTypesSaga);
 }

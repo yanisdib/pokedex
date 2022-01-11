@@ -4,17 +4,14 @@ import {
     takeLatest
 } from '@redux-saga/core/effects';
 
-import { fetchPokemon as fetchPokemonData } from '../../../api/pokemon';
+import { fetchPokemon } from '../../../api/pokemon';
 
-import {
-    fetchPokemonSuccess,
-    fetchPokemonFailure
-} from '../actions/pokemon';
+import { fetchPokemonSuccess, fetchPokemonFailure } from '../actions/pokemon';
 
 
-function* fetchPokemon({ settings }) {
+function* fetchPokemonSaga({ settings }) {
     try {
-        const pokemon = yield call(fetchPokemonData, settings);
+        const pokemon = yield call(fetchPokemon, settings);
         yield put(fetchPokemonSuccess(pokemon));
     }
     catch (error) {
@@ -28,5 +25,5 @@ function* fetchPokemon({ settings }) {
 
 
 export default function* pokemonSaga() {
-    yield takeLatest('pokemon/fetchPokemonRequested', fetchPokemon); 
+    yield takeLatest('pokemon/fetchPokemonRequested', fetchPokemonSaga);
 }
