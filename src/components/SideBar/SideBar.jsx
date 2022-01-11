@@ -1,10 +1,15 @@
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 
 import usePokemonTypes from '../../hooks/usePokemonTypes';
+import useFormField from '../../hooks/useFormField';
 
 import WithLoading from '../../helpers/hocs/withLoading';
 import { setTypeColors } from '../../helpers/lib/setTypeColors';
+
+import { setFiltersRequest } from '../../services/redux/actions/filters';
 
 import { SearchBar, Tag } from '..';
 
@@ -66,14 +71,29 @@ const TypeTags = styled.div`
     row-gap: 15px;
     align-items: center;
     justify-content: flex-start;
-    margin: 50px 0;
+    margin: 20px 0;
 `;
 
 
 function SideBar() {
+    const dispatch = useDispatch();
+
     const [types, isLoading] = usePokemonTypes();
 
+    const [selectedType, setSelectedType] = useState('');
+    const [searchText, setSearchText] = useFormField('');
+    const [sortBy, setSortBy] = useState('desc');
+
+
     const LoadingTypeTags = WithLoading(TypeTags);
+
+    useEffect(() => {
+        dispatch(setFiltersRequest({ text: searchText, type: selectedType, sortBy }));
+    }, [
+        searchText,
+        selectedType,
+        sortBy
+    ]);
 
     return (
         <Bar>
@@ -82,10 +102,24 @@ function SideBar() {
                     <Content>
                         <img src={logo} width='150' />
                         <h2>What Pokémon<br />are you looking for?</h2>
-                        <SearchBar placeholder='Search a Pokémon' />
+                        <SearchBar
+                            value={searchText}
+                            placeholder='Search a Pokémon'
+                            onChange={setSearchText}
+                        />
                     </Content>
                 </MenuHeader>
+                <br />
+                <h4>POKEMON TYPES</h4>
                 <LoadingTypeTags isLoading={isLoading}>
+                    <Tag
+                        key={uuid()}
+                        color="#000000"
+                        background="#bfbfbf"
+                        onClick={() => setSelectedType('')}
+                    >
+                        All
+                    </Tag>
                     {
                         types.map(type => {
                             const { color, background } = setTypeColors(type.name);
@@ -95,6 +129,7 @@ function SideBar() {
                                     key={uuid()}
                                     color={color}
                                     background={background}
+                                    onClick={(event) => setSelectedType(event.target.innerText.toLocaleLowerCase())}
                                 >
                                     {type.name}
                                 </Tag>
@@ -103,7 +138,7 @@ function SideBar() {
                     }
                 </LoadingTypeTags>
             </Wrapper>
-        </Bar>
+        </Bar >
     );
 }
 
