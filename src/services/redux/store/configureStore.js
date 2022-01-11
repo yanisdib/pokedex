@@ -6,7 +6,11 @@ import {
     createStore
 } from 'redux';
 
-import { pokemonReducer, typesReducer } from '../reducers';
+import {
+    pokemonReducer,
+    typesReducer,
+    filtersReducer
+} from '../reducers';
 
 import sagas from '../sagas/root';
 
@@ -17,7 +21,8 @@ const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
 
 const reducers = combineReducers({
     pokemon: pokemonReducer,
-    types: typesReducer
+    types: typesReducer,
+    filters: filtersReducer
 });
 
 
