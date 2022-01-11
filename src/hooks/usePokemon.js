@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchPokemonRequest } from '../services/redux/actions/pokemon';
+import filteredPokemon from '../services/redux/selectors/filteredPokemon';
 
 
 const usePokemon = (settings) => {
@@ -12,9 +13,13 @@ const usePokemon = (settings) => {
     }, [settings]);
 
     const pokemon = useSelector(state => state.pokemon);
+    const filters = useSelector(state => state.filters);
+
     const { data, isLoading, error } = pokemon;
 
-    return [data, isLoading, error]; 
+    const filteredData = filteredPokemon(data, filters);
+
+    return [filteredData, isLoading, error];
 }
 
 
