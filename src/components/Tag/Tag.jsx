@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export default styled.div`
     display: flex;
+    align-content: center;
     width: fit-content;
     background-color: ${({ background }) => background};
     font-size: 0.85em;
@@ -10,6 +11,8 @@ export default styled.div`
     color: ${({ color }) => color};
     text-align: center;
     text-transform: uppercase;
-    padding: 5px 15px;
+    line-height: 1;
+    padding: 7px 15px;
     border-radius: 20px;
+    cursor: pointer;
 `;
