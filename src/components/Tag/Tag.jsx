@@ -15,4 +15,5 @@ export default styled.div`
     padding: 7px 15px;
     border-radius: 20px;
     cursor: pointer;
+    box-shadow: 0px 4px 14px 0px rgb(110 110 110 / 38%);
 `;

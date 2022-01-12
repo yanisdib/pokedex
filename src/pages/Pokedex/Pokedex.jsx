@@ -8,7 +8,8 @@ import {
     Container,
     PokemonGrid,
     PokemonCardPreview,
-    SideBar
+    SideBar,
+    LoadMoreButton
 } from '../../components';
 
 
@@ -34,6 +35,10 @@ function Pokedex() {
                         />
                     )
                 }
+                <LoadMoreButton
+                    isLoading={isLoading}
+                    onClick={() => setSettings({ ...settings, limit: settings.limit + 12 })}
+                />
             </LoadingPokemonGrid>
         </Container>
     );

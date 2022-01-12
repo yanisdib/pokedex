@@ -1,5 +1,6 @@
 export { default as Tag } from './Tag/Tag';
 export { default as Spinner } from './Spinner/Spinner';
+export { default as LoadMoreButton } from './LoadMoreButton/LoadMoreButton';
 
 export { default as Container } from './Container/Container';
 
