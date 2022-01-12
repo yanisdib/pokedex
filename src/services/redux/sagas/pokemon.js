@@ -11,8 +11,11 @@ import { fetchPokemonSuccess, fetchPokemonFailure } from '../actions/pokemon';
 
 function* fetchPokemonSaga({ settings }) {
     try {
-        const pokemon = yield call(fetchPokemon, settings);
-        yield put(fetchPokemonSuccess(pokemon));
+        const response = yield call(fetchPokemon, settings);
+        
+        const { pokemon, pages } = response;
+
+        yield put(fetchPokemonSuccess({ pokemon, pages }));
     }
     catch (error) {
         const newError = new Error('Request failed. Please refresh the page.');

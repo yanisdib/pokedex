@@ -8,6 +8,7 @@ const pokemonReducer = (state = initialState, action) => {
             return {
                 ...state,
                 data: action.pokemon,
+                pages: action.pages,
                 isLoading: false
             };
         case 'pokemon/fetchPokemonFailed':

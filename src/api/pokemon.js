@@ -8,7 +8,7 @@ const API_HEADERS = { "Content-type": "application/json;charset=UTF-8" };
 /**
  * Fetch a limited set of Pokemon and their basic information (name and URL)
  * @param {*} param0 object with offset and limit properties
- * @returns an array of nested objects containing all fetched Pokemon data
+ * @returns an object containing an array of pokemon and an object of pages
  */
 export const fetchPokemon = async ({ offset, limit }) => {
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
@@ -22,11 +22,15 @@ export const fetchPokemon = async ({ offset, limit }) => {
 
     response = await response.data;
 
-    const pokemon = await Promise.all(
+    const { previous, next } = response;
+    const pages = { previous, next }; // URL of previous and next pokemon results
+
+    let pokemon = await Promise.all(
         response?.results.map(result => fetchPokemonByURL(result?.url))
     );
 
-    return pokemon;
+
+    return { pokemon, pages };
 }
 
 
