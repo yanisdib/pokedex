@@ -18,14 +18,44 @@ import pokeball from '../../assets/svg/pokeball.svg';
 
 
 const Bar = styled.aside`
-    display: flex;
-    flex-direction: row;
-    position: fixed;
-    width: 20vw;
-    height: 100vh;
-    top: 0;
-    left: 15vw;
-    z-index: 999;
+    /* Landscape phones and down */
+    @media (min-width: 320px) { 
+        display: flex;
+        flex-direction: row;
+        width: 90vw;
+        height: auto;
+        z-index: 999;
+    }
+
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 480px) { 
+        display: flex;
+        flex-direction: row;
+        width: 90vw;
+        height: auto;
+        z-index: 999;
+    }
+
+    /* Portrait tablet to landscape and desktop */
+    @media (min-width: 768px) { 
+        display: flex;
+        flex-direction: row;
+        width: 90vw;
+        height: auto;
+        z-index: 999; 
+    }
+
+    /* Large desktop */
+    @media (min-width: 1200px) { 
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        width: 20vw;
+        height: auto;
+        top: 0;
+        left: 15vw;
+        z-index: 999; 
+    }
 `;
 
 const Wrapper = styled.div`
@@ -40,13 +70,10 @@ const MenuHeader = styled.div`
     flex-direction: row;
     align-items: flex-end;
     width: 100%;
-    height: 30%;
     background-color: #d10000;
     background-image: url(${pokeball});
     background-repeat: no-repeat;
     background-position: 13vw -60px; 
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
 `;
 
 const Content = styled.div`
