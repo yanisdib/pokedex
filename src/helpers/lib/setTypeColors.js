@@ -65,8 +65,8 @@ const types = {
         background: '#8350ff'
     },
     dark: {
-        color: '#705848',
-        background: '#a29288'
+        color: '#ffffff',
+        background: '#484848'
     },
     fairy: {
         color: '#9b6470',
@@ -82,6 +82,11 @@ const types = {
     }
 };
 
+/**
+ * 
+ * @param {*} typeName 
+ * @returns an object with a color and a background color
+ */
 export const setTypeColors = (typeName) => {
     for (const type in types) {
         if (type === typeName) return types[type];
