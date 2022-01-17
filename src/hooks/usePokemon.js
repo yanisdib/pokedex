@@ -5,7 +5,7 @@ import { fetchPokemonRequest } from '../services/redux/actions/pokemon';
 import filteredPokemon from '../services/redux/selectors/filteredPokemon';
 
 
-const usePokemon = (settings) => {
+export default (settings) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,6 +21,3 @@ const usePokemon = (settings) => {
 
     return [filteredData, isLoading, error];
 }
-
-
-export default usePokemon;

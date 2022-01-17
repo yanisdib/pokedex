@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTypesRequest } from '../services/redux/actions/types';
 
 
-const usePokemonTypes = () => {
+export default () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -12,11 +12,8 @@ const usePokemonTypes = () => {
     }, []);
 
     const types = useSelector(state => state.types);
-    
+
     const { data, isLoading } = types;
 
     return [data, isLoading];
 }
-
-
-export default usePokemonTypes;
