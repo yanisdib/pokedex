@@ -3,7 +3,7 @@ const initialState = { data: [], isLoading: true };
 
 const pokemonReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'pokemon/fetchPokemonRequested': return state;
+        case 'pokemon/fetchPokemonRequested': return { ...state, isLoading: true };
         case 'pokemon/fetchPokemonSucceeded':
             return {
                 ...state,
