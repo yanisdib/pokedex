@@ -22,7 +22,7 @@ const Button = styled.button`
     align-items: center;
     width: 170px;
     height: 45px; 
-    background-color: #d10000;
+    background-color: #000000;
     font-family: 'Poppins', sans-serif;
     font-size: 0.85em;
     font-weight: 600;
@@ -39,8 +39,8 @@ function LoadMoreButton({ isLoading, onClick }) {
         <Wrapper>
             <Button onClick={onClick}>
                 {
-                    isLoading ? <Spinner /> : 'Load more'
-                }
+                    isLoading ? 'Loading...' : 'Load more'
+            }
             </Button>
         </Wrapper>
     );
