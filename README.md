@@ -51,7 +51,8 @@ If I was to make the app again I would have taken a different approach with TDD 
 ## Visuals and Featured Code 
 
 
-![Imgur](https://i.imgur.com/YTbx893.png)
+![Imgur](https://i.imgur.com/Rmvmupj.png)
+
 
 ### Featured piece of code no.1
 
@@ -76,7 +77,8 @@ Once the component mounts, this 'usePokemon' custom hook dispatch an action with
     }
 ```
 
-![Imgur](https://i.imgur.com/W2J0p7l.png)
+![Imgur](https://i.imgur.com/YTbx893.png)
+
 
 ### Featured piece of code no.2
 
@@ -97,3 +99,5 @@ export default (pokemon, { text, type, sortBy }) => {
         });
 }
 ```
+
+![Imgur](https://i.imgur.com/W2J0p7l.png)
