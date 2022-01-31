@@ -76,7 +76,7 @@ Once the component mounts, this 'usePokemon' custom hook dispatch an action with
     }
 ```
 
-![Imgur](https://i.imgur.com/R5m60rQ.png)
+![Imgur](https://i.imgur.com/W2J0p7l.png)
 
 ### Featured piece of code no.2
 
