@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+
 import App from '../App';
 import { Pokedex } from '../pages';
 

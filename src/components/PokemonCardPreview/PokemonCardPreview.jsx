@@ -27,7 +27,7 @@ const CardPreview = styled.div`
     }
 
     /* Landscape phone to portrait tablet */
-    @media (max-width: 480px) { 
+    @media (min-width: 480px) { 
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;

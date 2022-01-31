@@ -7,6 +7,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,11 +21,38 @@ const Container = styled.div`
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
     justify-content: center;
 `;
 
 const Dialog = styled.div`
+/* Landscape phones and down */
+@media (min-width: 320px) { 
+    display: flex;
+    flex-direction: row;
+    min-width: 80vw;
+    min-height: 75vh;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 480px) { 
+    display: flex;
+    flex-direction: row;
+    min-width: 90vw;
+    min-height: 80vh;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) { 
     display: flex;
     flex-direction: row;
     min-width: 400px;
@@ -34,6 +62,20 @@ const Dialog = styled.div`
     margin: 0 auto;
     padding: 12px;
     border-radius: 15px;
+}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+    display: flex;
+    flex-direction: row;
+    min-width: 400px;
+    min-height: 700px;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 15px;
+}
 `;
 
 
